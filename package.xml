@@ -2,7 +2,7 @@
          name="fmk_reports"
          developer="vsasa@bring.out.ba"
          descrip="xtuple fmk_reports package"
-         version="0.5.0"
+         version="0.6.0"
          updater="2.2.4">
   <pkgnotes></pkgnotes>
 
@@ -45,6 +45,18 @@
       &lt;/p>
     </message>
   </prerequisite>
+
+  <loadpriv name="SubanSpecifPuniPristup" module="fmk_reports">
+     Omogućava puni pristup i pregled subanalitičke specifikacije.
+  </loadpriv>  
+   
+  <loadpriv name="SubanSpecifSamoDatum" module="fmk_reports">
+     Omogućava pregled subanalitičke specifikacije samo po datumskom uslovu.
+  </loadpriv>  
+  
+  <loadpriv name="SubanSpecifSamoKlasa3" module="fmk_reports">
+     Omogućava pregled samo klase 3 na subanalitičkoj specifikaciji.
+  </loadpriv>  
 
   <script file="database/misc/schemaComment.sql" />
 

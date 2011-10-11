@@ -36,8 +36,18 @@ with (_view)
 _btnCancel.clicked.connect(mywindow, "close");
 
 // btn ok will generate report, call function generateReport()
-_btnOk.clicked.connect(generateReport);
-
+// but at first, check privileges of project
+if ( chk_privileges() ) {
+    _btnOk.clicked.connect(generateReport);
+}
+else
+{
+    _idKonto.enabled = false;
+    _dateFrom.enabled = false;
+    _dateTo.enabled = false;
+    _btnOk.enabled = false;
+    _lblStatus.text = "Nemate pravo na koristenje ovih opcija..."
+};
 
 // Generatig "specifikacija" report based on metasql query
 // We use subanSpec.xml report, see: /clients/reports/subanSpec.xml
@@ -48,13 +58,34 @@ function generateReport() {
     params.date_from = _dateFrom.date;
     params.date_to = _dateTo.date;
 
-    if (_idKonto.text != '') {
+    if ( !privileges.check("SubanSpecifSamoDatum") && _idKonto.text != '') {
         params.id_konto = _idKonto.text;
+        // check for privileges...
+        if ( !privileges.check("SubanSpecifPuniPristup") && privileges.check("SubanSpecifSamoKlasa3")) {
+            if ( _idkonto.text.charAt(0) != "3" ) {
+                toolbox.messageBox("critical", mywindow, mywindow.windowTitle, "Mozete uslov zadavati samo za klasu 3 ! Žao nam je :)");
+                return;
+            };
+        };
     };
 
     // Create pdf report with params
     toolbox.printReport("getSubanSpec", params);
 
+};
+
+
+// check for all privileges at startup
+function chk_privileges(){
+    if (privileges.check("SubanSpecifPuniPristup") ||
+            privileges.check("SubanSpecifSamoDatum") ||
+            privileges.check("SubanSpecifSamoKlasa3")) {
+        return true;
+    }
+    else
+    {
+        return false;
+    };
 };
 
 
