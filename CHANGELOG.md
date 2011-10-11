@@ -1,4 +1,4 @@
-0.5.0, vsasa, init verzija hello world paketa, [pogledaj #24708](http://redmine.bring.out.ba/issues/24708)
+0.5.0, vsasa, init verzija fmk_reports paketa, [pogledaj #24708](http://redmine.bring.out.ba/issues/24708)
 
 ----------------------------
 

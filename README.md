@@ -1,19 +1,19 @@
-xtuple example package "hello world"
+xtuple paket "fmk_reports"
 ====================================
 
 Info
 ----
 
-Ovaj paket se pojavljuje na meniju "Accounting" te dobijamo opciju "Suban reports"
+Ovaj paket se pojavljuje na meniju "Accounting" te dobijamo opciju "Fmk reports"
 
 Dobijamo mogućnost da povučemo izvještaj subanalitičke specifikacije za period i po kontu.
 
 Instalacija
 ------------
 
-Zapakovati sa sljedećom komandom: 
+Pakovanje se vrši na sljedeći način: 
 
-   ../x/xtuple_playground/$ gnutar cvfz hello_world_xtuple.gz hello_world_xtuple
+   ../x/fmk_reports/package/$ ./make_pkg.sh
 
 Sa updater aplikacijom instalirati u xtuple.
 
