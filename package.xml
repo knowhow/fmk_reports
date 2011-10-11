@@ -19,6 +19,19 @@
   </prerequisite>
 
   <prerequisite type="Query"
+                name="Da li je paket fmk instaliran ?" >
+    <query>
+      SELECT COUNT(*) &lt;= 1
+      FROM (SELECT *
+            FROM pkghead
+            WHERE (pkghead_name = 'fmk') ) AS dummy;
+    </query>
+    <message>
+	  xTuple fmk_reports paket je već instaliran, uklonite ga ili odradite upgrade.
+    </message>
+  </prerequisite>
+
+  <prerequisite type="Query"
                 name="Uvjerimo se da paket fmk_reports već nije instaliran" >
     <query>
       SELECT COUNT(*) &lt;= 0
@@ -46,10 +59,6 @@
     </message>
   </prerequisite>
 
-  <loadpriv name="SubanSpecifPuniPristup" module="fmk_reports">
-     Omogućava puni pristup i pregled subanalitičke specifikacije.
-  </loadpriv>  
-   
   <loadpriv name="SubanSpecifSamoDatum" module="fmk_reports">
      Omogućava pregled subanalitičke specifikacije samo po datumskom uslovu.
   </loadpriv>  
@@ -57,12 +66,6 @@
   <loadpriv name="SubanSpecifSamoKlasa3" module="fmk_reports">
      Omogućava pregled samo klase 3 na subanalitičkoj specifikaciji.
   </loadpriv>  
-
-  <script file="database/misc/schemaComment.sql" />
-
-  <createtable file="database/tables/tbl_suban.sql" name="fin_suban"/>
-
-  <createview file="database/views/vw_list_all.sql" name="vw_listallsuban"/>
 
   <loadappscript file="client/scripts/subanSpecif.js" name="subanSpecif" order="0"/>
   <loadappscript file="client/scripts/initMenu.js" name="initMenu" order="1"/>
@@ -72,6 +75,5 @@
   <loadmetasql file="client/metasql/rpt-subanspec.mql" />
 
   <loadreport  file="client/reports/subanSpec.xml" />
-
  
 </package>

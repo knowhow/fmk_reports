@@ -8,7 +8,7 @@ END) as duguje,
 SUM( CASE
   WHEN d_p = '2' THEN iznosbhd 
 END) as potrazuje
-FROM fmk_reports.fin_suban
+FROM fmk.v_fin_suban_list_all
 WHERE (true)
 <? if exists('id_konto') ?> 
  AND (idkonto LIKE <? value('id_konto') ?>)

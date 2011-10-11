@@ -64,7 +64,7 @@ function generateReport() {
         params.id_konto = _kto;
 
         // check for privileges...
-        if ( !privileges.check("SubanSpecifPuniPristup") && privileges.check("SubanSpecifSamoKlasa3")) {
+        if ( privileges.check("SubanSpecifSamoKlasa3")) {
             if ( _kto.charAt(0) != "3" ) {
                 toolbox.messageBox("critical", mywindow, mywindow.windowTitle, "Mozete uslov zadavati samo za klasu 3 ! Žao nam je :)");
                 return;
@@ -80,8 +80,7 @@ function generateReport() {
 
 // check for all privileges at startup
 function chk_privileges(){
-    if (privileges.check("SubanSpecifPuniPristup") ||
-            privileges.check("SubanSpecifSamoDatum") ||
+    if (privileges.check("SubanSpecifSamoDatum") ||
             privileges.check("SubanSpecifSamoKlasa3")) {
         return true;
     }
@@ -101,7 +100,7 @@ function fill_data() {
     };
 
     // quering data from table
-    var data = toolbox.executeQuery("SELECT idfirma, idvd as idvd, brnal as brnal, idkonto as idkonto FROM xthelloworld.fin_suban LIMIT 10");
+    var data = toolbox.executeQuery("SELECT idfirma, idvd as idvd, brnal as brnal, idkonto as idkonto FROM fmk.v_fin_suban_list_all LIMIT 10");
     try
     {
         // fill data to _view control
@@ -122,7 +121,7 @@ function fill_data() {
 function hasData()
 {
     var cparam = new Object();
-    var data = toolbox.executeQuery('SELECT count(*) as count FROM xthelloworld.fin_suban', cparam);
+    var data = toolbox.executeQuery('SELECT count(*) as count FROM fmk.v_fin_suban_list_all', cparam);
     if (data.first())
     {
         if (data.value("count") > 0)
