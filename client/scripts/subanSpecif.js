@@ -55,21 +55,30 @@ function generateReport() {
 
     // Create parameters for report
     var params = new Object;
-    params.date_from = _dateFrom.date;
-    params.date_to = _dateTo.date;
+	var _kto = _idKonto.text;
+	var _kclass = _kto.charAt(0);
 
-    if ( !privileges.check("SubanSpecifSamoDatum") && _idKonto.text != '') {
+	// check privileges
+	if (privileges.check("SubanSpecifDatum")) {
+    	params.date_from = _dateFrom.date;
+    	params.date_to = _dateTo.date;
+	};
 
-        var _kto = _idKonto.text;
-        params.id_konto = _kto;
+    if ( _kto != '') {
+        
+		if ((_kclass == "2" && privileges.check("SubanSpecifKlasa2")) ||
+			(_kclass == "3" && privileges.check("SubanSpecifKlasa3")) ) {
+			// this will pass...
+		}
+		else
+		{
+			// this will not pass...
+			toolbox.messageBox("critical", mywindow, mywindow.windowTitle, "Nemate prava na koristenje ove opcije !");
+			return;
+		};
 
-        // check for privileges...
-        if ( privileges.check("SubanSpecifSamoKlasa3")) {
-            if ( _kto.charAt(0) != "3" ) {
-                toolbox.messageBox("critical", mywindow, mywindow.windowTitle, "Mozete uslov zadavati samo za klasu 3 ! Žao nam je :)");
-                return;
-            };
-        };
+		// add param
+		params.id_konto = _kto;
     };
 
     // Create pdf report with params
@@ -80,8 +89,9 @@ function generateReport() {
 
 // check for all privileges at startup
 function chk_privileges(){
-    if (privileges.check("SubanSpecifSamoDatum") ||
-            privileges.check("SubanSpecifSamoKlasa3")) {
+    if (privileges.check("SubanSpecifDatum") ||
+            privileges.check("SubanSpecifKlasa2") || 
+			privileges.check("SubanSpecifKlasa3")) {
         return true;
     }
     else

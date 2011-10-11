@@ -59,13 +59,18 @@
     </message>
   </prerequisite>
 
-  <loadpriv name="SubanSpecifSamoDatum" module="fmk_reports">
-     Omogućava pregled subanalitičke specifikacije samo po datumskom uslovu.
+  <loadpriv name="SubanSpecifDatum" module="fmk_reports">
+     Omogućava pregled subanalitičke specifikacije po datumskom uslovu.
   </loadpriv>  
   
-  <loadpriv name="SubanSpecifSamoKlasa3" module="fmk_reports">
-     Omogućava pregled samo klase 3 na subanalitičkoj specifikaciji.
+  <loadpriv name="SubanSpecifKlasa2" module="fmk_reports">
+     Omogućava pregled klase 2 na subanalitičkoj specifikaciji.
   </loadpriv>  
+
+  <loadpriv name="SubanSpecifKlasa3" module="fmk_reports">
+     Omogućava pregled klase 3 na subanalitičkoj specifikaciji.
+  </loadpriv>  
+
 
   <loadappscript file="client/scripts/subanSpecif.js" name="subanSpecif" order="0"/>
   <loadappscript file="client/scripts/initMenu.js" name="initMenu" order="1"/>
