@@ -17,8 +17,6 @@ Pakovanje se vrši na sljedeći način:
 
 Sa updater aplikacijom instalirati u xtuple.
 
-Nakon instalacije novokreirana tabela fin_suban je prazna pa je treba napuniti 
-sa 'dbf2pg' komandom i podacima, pogledaj aktivnosti: #24717 i #24708
 
 
 
