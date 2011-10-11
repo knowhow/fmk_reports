@@ -59,10 +59,13 @@ function generateReport() {
     params.date_to = _dateTo.date;
 
     if ( !privileges.check("SubanSpecifSamoDatum") && _idKonto.text != '') {
-        params.id_konto = _idKonto.text;
+
+        var _kto = _idKonto.text;
+        params.id_konto = _kto;
+
         // check for privileges...
         if ( !privileges.check("SubanSpecifPuniPristup") && privileges.check("SubanSpecifSamoKlasa3")) {
-            if ( _idkonto.text.charAt(0) != "3" ) {
+            if ( _kto.charAt(0) != "3" ) {
                 toolbox.messageBox("critical", mywindow, mywindow.windowTitle, "Mozete uslov zadavati samo za klasu 3 ! Žao nam je :)");
                 return;
             };
