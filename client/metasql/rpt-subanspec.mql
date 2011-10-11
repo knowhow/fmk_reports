@@ -1,0 +1,18 @@
+-- Group: rpt
+-- Name:  subanspec
+-- Notes: Get suban specification
+SELECT idkonto, idpartner, 
+SUM( CASE 
+  WHEN d_p = '1' THEN iznosbhd 
+END) as duguje,
+SUM( CASE
+  WHEN d_p = '2' THEN iznosbhd 
+END) as potrazuje
+FROM fmk_reports.fin_suban
+WHERE (true)
+<? if exists('id_konto') ?> 
+ AND (idkonto LIKE <? value('id_konto') ?>)
+<? endif ?>
+AND (datdok >= <? value('date_from') ?> AND datdok <= <? value('date_to') ?>) 
+GROUP BY idkonto, idpartner
+ORDER BY idkonto;

@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <comment>This file is part of the xTuple ERP: PostBooks Edition, a free and
+open source Enterprise Resource Planning software suite,
+Copyright (c) 1999-2010 by OpenMFG LLC, d/b/a xTuple.
+It is licensed to you under the Common Public Attribution License
+version 1.0, the full text of which (including xTuple-specific Exhibits)
+is available at www.xtuple.com/CPAL.  By using this software, you agree
+to be bound by its terms.</comment>
+ <class>subanSpecif</class>
+ <widget class="QWidget" name="subanSpecif">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>616</width>
+    <height>377</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Subanaliticka specifikacija</string>
+  </property>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>601</width>
+     <height>311</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Uslovi izvjestaja:</string>
+   </property>
+   <widget class="QDateEdit" name="_dateTo">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>60</y>
+      <width>110</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="displayFormat">
+     <string>dd/MM/yyyy</string>
+    </property>
+   </widget>
+   <widget class="QDateEdit" name="_dateFrom">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>60</y>
+      <width>110</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="displayFormat">
+     <string>dd/MM/yyyy</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>40</y>
+      <width>62</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Datum od:</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>40</y>
+      <width>62</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Datum do:</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="_idKonto">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>60</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>310</x>
+      <y>40</y>
+      <width>62</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Konto:</string>
+    </property>
+   </widget>
+   <widget class="XTreeView" name="_view">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>100</y>
+      <width>561</width>
+      <height>192</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="_btnOk">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>330</y>
+     <width>101</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ok</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="_btnCancel">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>330</y>
+     <width>101</width>
+     <height>32</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Odustani</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="_lblStatus">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>330</y>
+     <width>371</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Status:</string>
+   </property>
+  </widget>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>XTreeView</class>
+   <extends>QTreeView</extends>
+   <header>xtreeview.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

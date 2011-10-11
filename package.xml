@@ -1,0 +1,65 @@
+<package id="fmk_reports"
+         name="fmk_reports"
+         developer="vsasa@bring.out.ba"
+         descrip="xtuple fmk_reports package"
+         version="0.5.0"
+         updater="2.2.4">
+  <pkgnotes></pkgnotes>
+
+  <prerequisite type="Query"
+                name="xTuple ERP version">
+    <query>
+      SELECT (SUBSTRING(fetchMetricText('ServerVersion') FOR 1) > '3') 
+          OR (SUBSTRING(fetchMetricText('ServerVersion') FOR 1) = '3'
+          AND SUBSTRING(fetchMetricText('ServerVersion') FROM 3 FOR 1) >= '6');
+    </query>
+    <message>
+      Ova verzija fmk_reports radi samo sa xTuple ERP verzijom 3.6.0 ili većom.
+    </message>
+  </prerequisite>
+
+  <prerequisite type="Query"
+                name="Uvjerimo se da paket fmk_reports već nije instaliran" >
+    <query>
+      SELECT COUNT(*) &lt;= 0
+      FROM (SELECT *
+            FROM pkghead
+            WHERE (pkghead_name = 'fmk_reports') ) AS dummy;
+    </query>
+    <message>
+	  xTuple fmk_reports paket je već instaliran, uklonite ga ili odradite upgrade.
+    </message>
+  </prerequisite>
+
+  <prerequisite type="license" name="xTuple Concise EULA">
+    <message>
+      &lt;p>
+          This file is part of the knowhow ERP, a free and open source
+          Enterprise Resource Planning software suite,
+          Copyright (c) 2010-2011 by bring.out doo Sarajevo.
+          It is licensed to you under the Common Public Attribution License
+          version 1.0, the full text of which (including knowhow-specific Exhibits)
+          is available in the file LICENSE_CPAL_bring.out_knowhow.md located at the
+          root directory of this source code archive.
+          By using this software, you agree to be bound by its terms.
+      &lt;/p>
+    </message>
+  </prerequisite>
+
+  <script file="database/misc/schemaComment.sql" />
+
+  <createtable file="database/tables/tbl_suban.sql" name="fin_suban"/>
+
+  <createview file="database/views/vw_list_all.sql" name="vw_listallsuban"/>
+
+  <loadappscript file="client/scripts/subanSpecif.js" name="subanSpecif" order="0"/>
+  <loadappscript file="client/scripts/initMenu.js" name="initMenu" order="1"/>
+
+  <loadappui file="client/uiforms/subanSpecif.ui" order="0" />
+  
+  <loadmetasql file="client/metasql/rpt-subanspec.mql" />
+
+  <loadreport  file="client/reports/subanSpec.xml" />
+
+ 
+</package>
