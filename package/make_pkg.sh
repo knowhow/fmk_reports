@@ -1,1 +1,1 @@
-gnutar cvfz fmk_reports.gz ../../fmk_reports/ --exclude=fmk_repo*.gz
+gnutar cvfz fmk_reports.gz ../../fmk_reports/ --exclude=fmk_repo*.gz --exclude=.git
